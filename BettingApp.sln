@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingAppWeb", "BettingAppWeb\BettingAppWeb.csproj", "{24D86027-104C-4A71-8332-8BDC72A24C36}"
+	ProjectSection(ProjectDependencies) = postProject
+		{822DCDB3-AD73-4D73-8B1E-384C0FDC4786} = {822DCDB3-AD73-4D73-8B1E-384C0FDC4786}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingAppWcf", "BettingAppWcf\BettingAppWcf.csproj", "{822DCDB3-AD73-4D73-8B1E-384C0FDC4786}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{24D86027-104C-4A71-8332-8BDC72A24C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24D86027-104C-4A71-8332-8BDC72A24C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24D86027-104C-4A71-8332-8BDC72A24C36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{822DCDB3-AD73-4D73-8B1E-384C0FDC4786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{822DCDB3-AD73-4D73-8B1E-384C0FDC4786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{822DCDB3-AD73-4D73-8B1E-384C0FDC4786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{822DCDB3-AD73-4D73-8B1E-384C0FDC4786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
