@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using BettingAppWeb.Models;
 using System.Web.Mvc;
+using BettingAppWeb.AccountService;
+using FootballBettingWeb;
 
 namespace BettingAppWeb.Controllers
 {
@@ -18,10 +17,36 @@ namespace BettingAppWeb.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Register()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel user)
+        {
+
+            if (!ModelState.IsValid)
+                return View(user);
+
+            User principal = new User
+            {
+                Username = user.Username,
+                Password = user.Password,
+                Role = "user"
+            };
+
+
+            var registerResult = ServiceSingleton.Instance.AccountServiceClient.RegisterResult(principal);
+
+            if (registerResult)
+                return Redirect("Login");
+            else
+                return View();
+        }
+
+
 
         public ActionResult ForgotPassword()
         {

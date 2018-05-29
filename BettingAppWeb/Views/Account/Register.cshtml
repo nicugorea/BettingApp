@@ -1,7 +1,8 @@
-﻿
+﻿@model BettingAppWeb.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
+
 
 <style type="text/css">
     .register-form {
@@ -32,32 +33,36 @@
 </style>
 
 <div class="register-form">
-    <form>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+
+
         <h2 class="text-center">Register</h2>
+        @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="form-group">
-            <input type="text"
-                   class="form-control"
-                   placeholder="Username"
-                   required="required">
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control",
+                                                     @placeholder = "Username"})
+
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control",
+                                                   @placeholder = "Password"})
+
+        </div>
+
+        <div class="form-group">
+
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control",
+                                                   @placeholder = "ConfirmPassword"})
         </div>
         <div class="form-group">
-            <input type="password"
-                   class="form-control"
-                   placeholder="Password"
-                   required="required">
+            <input type="submit"
+                   class="btn btn-primary btn-block"
+                   value="Register" />
         </div>
-        <div class="form-group">
-            <input type="password"
-                   class="form-control"
-                   placeholder="Confirm Password"
-                   required="required">
-        </div>
-        <div class="form-group">
-            <button type="submit"
-                    class="btn btn-primary btn-block">
-                Register
-            </button>
-        </div>
-    </form>
+    }
     <p class="text-center"><a href="Login">Login to existing account</a></p>
 </div>
+

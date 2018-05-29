@@ -160,10 +160,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginViewMode.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ServiceSingletone.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\AccountService\AccountService.disco" />
+    <None Include="Connected Services\AccountService\AccountService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\AccountService\BettingAppWeb.AccountService.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\AccountService\configuration91.svcinfo" />
     <None Include="Connected Services\AccountService\configuration.svcinfo" />
     <None Include="Connected Services\AccountService\Reference.svcmap">
@@ -222,7 +231,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

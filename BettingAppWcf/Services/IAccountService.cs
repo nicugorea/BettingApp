@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using BettingAppWcf.Models;
+using System.ServiceModel;
 
 namespace BettingAppWcf.Services
 {
@@ -6,6 +7,11 @@ namespace BettingAppWcf.Services
     public interface IAccountService
     {
         [OperationContract]
-        string DoWork();
+        User GetUserByUsername(string username);
+
+        [OperationContract]
+        bool RegisterResult(User user);
+        
+
     }
 }
