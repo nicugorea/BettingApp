@@ -116,11 +116,35 @@ namespace BettingAppWeb.AccountService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetUserByUsername", ReplyAction="http://tempuri.org/IAccountService/GetUserByUsernameResponse")]
         System.Threading.Tasks.Task<BettingAppWeb.AccountService.User> GetUserByUsernameAsync(string username);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetUserById", ReplyAction="http://tempuri.org/IAccountService/GetUserByIdResponse")]
+        BettingAppWeb.AccountService.User GetUserById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetUserById", ReplyAction="http://tempuri.org/IAccountService/GetUserByIdResponse")]
+        System.Threading.Tasks.Task<BettingAppWeb.AccountService.User> GetUserByIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/RegisterResult", ReplyAction="http://tempuri.org/IAccountService/RegisterResultResponse")]
         bool RegisterResult(BettingAppWeb.AccountService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/RegisterResult", ReplyAction="http://tempuri.org/IAccountService/RegisterResultResponse")]
         System.Threading.Tasks.Task<bool> RegisterResultAsync(BettingAppWeb.AccountService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/LoginResult", ReplyAction="http://tempuri.org/IAccountService/LoginResultResponse")]
+        bool LoginResult(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/LoginResult", ReplyAction="http://tempuri.org/IAccountService/LoginResultResponse")]
+        System.Threading.Tasks.Task<bool> LoginResultAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IsUser", ReplyAction="http://tempuri.org/IAccountService/IsUserResponse")]
+        bool IsUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IsUser", ReplyAction="http://tempuri.org/IAccountService/IsUserResponse")]
+        System.Threading.Tasks.Task<bool> IsUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IsAdmin", ReplyAction="http://tempuri.org/IAccountService/IsAdminResponse")]
+        bool IsAdmin(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IsAdmin", ReplyAction="http://tempuri.org/IAccountService/IsAdminResponse")]
+        System.Threading.Tasks.Task<bool> IsAdminAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -158,12 +182,44 @@ namespace BettingAppWeb.AccountService {
             return base.Channel.GetUserByUsernameAsync(username);
         }
         
+        public BettingAppWeb.AccountService.User GetUserById(int id) {
+            return base.Channel.GetUserById(id);
+        }
+        
+        public System.Threading.Tasks.Task<BettingAppWeb.AccountService.User> GetUserByIdAsync(int id) {
+            return base.Channel.GetUserByIdAsync(id);
+        }
+        
         public bool RegisterResult(BettingAppWeb.AccountService.User user) {
             return base.Channel.RegisterResult(user);
         }
         
         public System.Threading.Tasks.Task<bool> RegisterResultAsync(BettingAppWeb.AccountService.User user) {
             return base.Channel.RegisterResultAsync(user);
+        }
+        
+        public bool LoginResult(string username, string password) {
+            return base.Channel.LoginResult(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LoginResultAsync(string username, string password) {
+            return base.Channel.LoginResultAsync(username, password);
+        }
+        
+        public bool IsUser(int id) {
+            return base.Channel.IsUser(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsUserAsync(int id) {
+            return base.Channel.IsUserAsync(id);
+        }
+        
+        public bool IsAdmin(int id) {
+            return base.Channel.IsAdmin(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsAdminAsync(int id) {
+            return base.Channel.IsAdminAsync(id);
         }
     }
 }

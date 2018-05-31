@@ -1,6 +1,6 @@
 ﻿using BettingAppWeb.AccountService;
 
-namespace FootballBettingWeb
+namespace BettingAppWeb.Shared
 {
     public class ServiceSingleton
     {

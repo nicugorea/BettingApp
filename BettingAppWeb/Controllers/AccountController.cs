@@ -1,7 +1,7 @@
 ﻿using BettingAppWeb.Models;
 using System.Web.Mvc;
 using BettingAppWeb.AccountService;
-using FootballBettingWeb;
+using BettingAppWeb.Shared;
 
 namespace BettingAppWeb.Controllers
 {
@@ -12,8 +12,23 @@ namespace BettingAppWeb.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Login()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginViewModel user)
+        {
+            if (ManagerSingleton.Instance.AuthenticationManager.LoginUserByCredentials
+                (user.Username, user.Password))
+            {
+                if (ManagerSingleton.Instance.AuthenticationManager.IsAdmin())
+                    return Redirect("~/Home/AdminIndex");
+                if (ManagerSingleton.Instance.AuthenticationManager.IsUser())
+                    return Redirect("~/Home/Index");
+            }
             return View();
         }
 
@@ -51,6 +66,12 @@ namespace BettingAppWeb.Controllers
         public ActionResult ForgotPassword()
         {
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            ManagerSingleton.Instance.AuthenticationManager.LogoutUser();   
+            return Redirect("~/Home/Index");
         }
 
     }

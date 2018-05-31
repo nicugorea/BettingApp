@@ -19,5 +19,11 @@ namespace BettingAppWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult AdminIndex()
+        {
+            return View();
+        }
+
     }
 }

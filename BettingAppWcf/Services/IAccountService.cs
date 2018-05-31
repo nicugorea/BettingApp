@@ -10,8 +10,19 @@ namespace BettingAppWcf.Services
         User GetUserByUsername(string username);
 
         [OperationContract]
+        User GetUserById(int id);
+
+        [OperationContract]
         bool RegisterResult(User user);
-        
+
+        [OperationContract]
+        bool LoginResult(string username, string password);
+
+        [OperationContract]
+        bool IsUser(int id);
+
+        [OperationContract]
+        bool IsAdmin(int id);
 
     }
 }

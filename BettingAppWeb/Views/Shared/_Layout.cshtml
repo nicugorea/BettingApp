@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using BettingAppWeb.Shared;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -25,8 +26,17 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    @{
+                        if (ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+                        {
+                            <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                        }
+                    }
                 </ul>
             </div>
         </div>
