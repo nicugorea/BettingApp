@@ -233,6 +233,8 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Home\AdminIndex.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />
+    <Content Include="Views\Home\UserIndex.cshtml" />
+    <Content Include="Views\Account\MyAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

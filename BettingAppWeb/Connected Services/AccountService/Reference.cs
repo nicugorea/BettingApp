@@ -123,10 +123,10 @@ namespace BettingAppWeb.AccountService {
         System.Threading.Tasks.Task<BettingAppWeb.AccountService.User> GetUserByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/RegisterResult", ReplyAction="http://tempuri.org/IAccountService/RegisterResultResponse")]
-        bool RegisterResult(BettingAppWeb.AccountService.User user);
+        bool RegisterResult(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/RegisterResult", ReplyAction="http://tempuri.org/IAccountService/RegisterResultResponse")]
-        System.Threading.Tasks.Task<bool> RegisterResultAsync(BettingAppWeb.AccountService.User user);
+        System.Threading.Tasks.Task<bool> RegisterResultAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/LoginResult", ReplyAction="http://tempuri.org/IAccountService/LoginResultResponse")]
         bool LoginResult(string username, string password);
@@ -190,12 +190,12 @@ namespace BettingAppWeb.AccountService {
             return base.Channel.GetUserByIdAsync(id);
         }
         
-        public bool RegisterResult(BettingAppWeb.AccountService.User user) {
-            return base.Channel.RegisterResult(user);
+        public bool RegisterResult(string username, string password) {
+            return base.Channel.RegisterResult(username, password);
         }
         
-        public System.Threading.Tasks.Task<bool> RegisterResultAsync(BettingAppWeb.AccountService.User user) {
-            return base.Channel.RegisterResultAsync(user);
+        public System.Threading.Tasks.Task<bool> RegisterResultAsync(string username, string password) {
+            return base.Channel.RegisterResultAsync(username, password);
         }
         
         public bool LoginResult(string username, string password) {

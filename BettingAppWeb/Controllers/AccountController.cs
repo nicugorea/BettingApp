@@ -12,6 +12,7 @@ namespace BettingAppWeb.Controllers
             return View();
         }
 
+        #region login
         [HttpGet]
         public ActionResult Login()
         {
@@ -31,7 +32,9 @@ namespace BettingAppWeb.Controllers
             }
             return View();
         }
+        #endregion
 
+        #region register
         [HttpGet]
         public ActionResult Register()
         {
@@ -45,23 +48,12 @@ namespace BettingAppWeb.Controllers
             if (!ModelState.IsValid)
                 return View(user);
 
-            User principal = new User
-            {
-                Username = user.Username,
-                Password = user.Password,
-                Role = "user"
-            };
-
-
-            var registerResult = ServiceSingleton.Instance.AccountServiceClient.RegisterResult(principal);
-
-            if (registerResult)
+            if (ManagerSingleton.Instance.AuthenticationManager.RegisterUserByCredentials(user.Username, user.Password))
                 return Redirect("Login");
             else
                 return View();
         }
-
-
+        #endregion
 
         public ActionResult ForgotPassword()
         {
@@ -70,9 +62,15 @@ namespace BettingAppWeb.Controllers
 
         public ActionResult Logout()
         {
-            ManagerSingleton.Instance.AuthenticationManager.LogoutUser();   
+            ManagerSingleton.Instance.AuthenticationManager.LogoutUser();
             return Redirect("~/Home/Index");
         }
 
+        public ActionResult MyAccount()
+        {
+            if (!ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+                return Redirect("~/Home/Index");
+            return View();
+        }
     }
 }

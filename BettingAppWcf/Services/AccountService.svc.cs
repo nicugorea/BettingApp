@@ -48,15 +48,18 @@ namespace BettingAppWcf.Services
             }
         }
 
-        public bool RegisterResult(User user)
+        public bool RegisterResult(string username, string password)
         {
             using (var database = new BettingAppDBEntities())
             {
-                var testUser = GetUserByUsername(user.Username);
+                var testUser = GetUserByUsername(username);
                 if (testUser != null)
                     return false;
 
-                user.Password = user.Password.GetHashCode().ToString();
+                var user = new User();
+                user.Username = username;
+                user.Password = password.GetHashCode().ToString();
+                user.Role = "user";
 
                 database.Users.Add(user);
                 database.SaveChanges();

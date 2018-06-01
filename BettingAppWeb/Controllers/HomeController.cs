@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using BettingAppWeb.AccountService;
+using BettingAppWeb.Shared;
 
 namespace BettingAppWeb.Controllers
 {
@@ -7,6 +7,14 @@ namespace BettingAppWeb.Controllers
     {
         public ActionResult Index()
         {
+            if (ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+            {
+                if (ManagerSingleton.Instance.AuthenticationManager.IsUser())
+                    return Redirect("~/Home/UserIndex");
+                if (ManagerSingleton.Instance.AuthenticationManager.IsAdmin())
+                    return Redirect("~/Home/AdminIndex");
+
+            }
             return View();
         }
 
@@ -20,10 +28,16 @@ namespace BettingAppWeb.Controllers
             return View();
         }
 
+        public ActionResult UserIndex()
+        {
+            return View();
+        }
+
         public ActionResult AdminIndex()
         {
             return View();
         }
+
 
     }
 }

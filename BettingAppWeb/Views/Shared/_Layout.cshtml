@@ -29,6 +29,8 @@
                     @{
                         if (ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
                         {
+                            string nickname = ManagerSingleton.Instance.AuthenticationManager.GetUserNickname();
+                            <li>@Html.ActionLink(nickname, "MyAccount", "Account")</li>
                             <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
                         }
                         else

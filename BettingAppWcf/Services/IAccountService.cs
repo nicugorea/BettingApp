@@ -13,7 +13,7 @@ namespace BettingAppWcf.Services
         User GetUserById(int id);
 
         [OperationContract]
-        bool RegisterResult(User user);
+        bool RegisterResult(string username, string password);
 
         [OperationContract]
         bool LoginResult(string username, string password);

@@ -9,6 +9,11 @@
 
         public int LocalUserId { get; set; }
 
+        public string GetUserNickname()
+        {
+            return ServiceSingleton.Instance.AccountServiceClient.GetUserById(LocalUserId).Username;
+        }
+
         public bool IsAdmin()
         {
             return ServiceSingleton.Instance.AccountServiceClient.IsAdmin(LocalUserId);
@@ -38,6 +43,11 @@
         {
             LocalUserId = -1;
             return true;
+        }
+
+        public bool RegisterUserByCredentials(string username, string password)
+        {
+            return ServiceSingleton.Instance.AccountServiceClient.RegisterResult(username, password);
         }
     }
 }
