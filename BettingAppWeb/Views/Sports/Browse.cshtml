@@ -1,0 +1,51 @@
+﻿@model List<BettingAppWeb.Models.SportViewModel>
+
+@{
+    ViewBag.Title = "Browse";
+}
+
+
+<h2>Browse</h2>
+
+<div class="center-block">
+    <table class="table">
+        <thead class="table">
+            <tr>
+                <th>
+                    ID
+                </th>
+
+                <th>
+                    Sport Name
+                </th>
+
+                <th>
+                    End Date
+                </th>
+            </tr>
+        </thead>
+        @{ foreach (var sport in Model)
+            {
+        <tr>
+            <td>
+                @sport.ID
+            </td>
+
+            <td>
+                @sport.Name
+            </td>
+
+            <td>
+                @sport.Date
+            </td>
+
+
+        </tr>
+
+            }
+
+        }
+    </table>
+</div>
+
+

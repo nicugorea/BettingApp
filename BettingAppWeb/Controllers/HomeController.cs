@@ -30,11 +30,15 @@ namespace BettingAppWeb.Controllers
 
         public ActionResult UserIndex()
         {
+            if (!ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+                return Redirect("~/Home/Index");
             return View();
         }
 
         public ActionResult AdminIndex()
         {
+            if (!ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+                return Redirect("~/Home/Index");
             return View();
         }
 

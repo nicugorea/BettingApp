@@ -16,11 +16,13 @@
 
         public bool IsAdmin()
         {
+            if (!IsUserLoggedIn()) return false;
             return ServiceSingleton.Instance.AccountServiceClient.IsAdmin(LocalUserId);
         }
 
         public bool IsUser()
         {
+            if (!IsUserLoggedIn()) return false;
             return ServiceSingleton.Instance.AccountServiceClient.IsUser(LocalUserId);
         }
 
