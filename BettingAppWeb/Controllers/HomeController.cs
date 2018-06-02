@@ -37,7 +37,7 @@ namespace BettingAppWeb.Controllers
 
         public ActionResult AdminIndex()
         {
-            if (!ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+            if (!ManagerSingleton.Instance.AuthenticationManager.IsAdmin())
                 return Redirect("~/Home/Index");
             return View();
         }

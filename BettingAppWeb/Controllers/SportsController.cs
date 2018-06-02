@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using BettingAppWeb.Models;
 using BettingAppWeb.Shared;
 
@@ -9,24 +8,23 @@ namespace BettingAppWeb.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return Redirect("~/Home/Index");
         }
 
+        [HttpGet]
         public ActionResult Browse()
         {
 
-            var sport = new SportViewModel {
-                Name = "Football",
-                Description = "A game with a ball",
-                Value = 24,
-            };
-            sport.EndTime = DateTime.Now;
+            ViewData["SportsList"] = ManagerSingleton.Instance.SportsManager.GetSportsList();
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult Browse(SportViewModel sport)
+        {
             ManagerSingleton.Instance.SportsManager.AddSport(sport);
-            var list = ManagerSingleton.Instance.SportsManager.GetSportsList();
-            
-           
-            return View(list);
+            ViewData["SportsList"] = ManagerSingleton.Instance.SportsManager.GetSportsList();
+            return View();
         }
     }
 }

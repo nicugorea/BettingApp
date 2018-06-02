@@ -9,19 +9,23 @@ namespace BettingAppWeb.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+                return Redirect("~/Home/Index");
         }
 
         #region login
         [HttpGet]
         public ActionResult Login()
         {
+            if (ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+                return Redirect("~/Home/Index");
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(LoginViewModel user)
         {
+            if (ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+                return Redirect("~/Home/Index");
             if (ManagerSingleton.Instance.AuthenticationManager.LoginUserByCredentials
                 (user.Username, user.Password))
             {
@@ -38,13 +42,16 @@ namespace BettingAppWeb.Controllers
         [HttpGet]
         public ActionResult Register()
         {
+            if (ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+                return Redirect("~/Home/Index");
             return View();
         }
 
         [HttpPost]
         public ActionResult Register(RegisterViewModel user)
         {
-
+            if (ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+                return Redirect("~/Home/Index");
             if (!ModelState.IsValid)
                 return View(user);
 
@@ -57,11 +64,15 @@ namespace BettingAppWeb.Controllers
 
         public ActionResult ForgotPassword()
         {
+            if (ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+                return Redirect("~/Home/Index");
             return View();
         }
 
         public ActionResult Logout()
         {
+            if (!ManagerSingleton.Instance.AuthenticationManager.IsUserLoggedIn())
+                return Redirect("~/Home/Index");
             ManagerSingleton.Instance.AuthenticationManager.LogoutUser();
             return Redirect("~/Home/Index");
         }
