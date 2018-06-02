@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6eb6d19c-ee7a-4f04-b65c-d3aa80e54c46" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:61477/Services/SportService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SportService.wsdl" MetadataType="Wsdl" ID="f70b04f1-e06d-41cc-9d21-4cc6c88e3eea" SourceId="1" SourceUrl="http://localhost:61477/Services/SportService.svc?wsdl" />
+    <MetadataFile FileName="SportService.xsd" MetadataType="Schema" ID="715d3b2c-32c8-409d-b843-f5205ac71934" SourceId="1" SourceUrl="http://localhost:61477/Services/SportService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SportService1.xsd" MetadataType="Schema" ID="6bf1040f-aa2e-4dba-8850-6d217a667634" SourceId="1" SourceUrl="http://localhost:61477/Services/SportService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SportService.disco" MetadataType="Disco" ID="ad13e28d-9c36-4c3d-b353-937c4962f403" SourceId="1" SourceUrl="http://localhost:61477/Services/SportService.svc?disco" />
+    <MetadataFile FileName="SportService2.xsd" MetadataType="Schema" ID="2ebe82f7-274e-41c8-9b6f-d4204f92e7fa" SourceId="1" SourceUrl="http://localhost:61477/Services/SportService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

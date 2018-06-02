@@ -26,5 +26,6 @@ namespace BettingAppWcf.Models
         }
     
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Sport> Sports { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BettingAppWeb.AccountService;
+using BettingAppWeb.SportService;
 
 namespace BettingAppWeb.Shared
 {
@@ -6,6 +7,7 @@ namespace BettingAppWeb.Shared
     {
         private static ServiceSingleton _instance = null;
         private AccountServiceClient _accountServiceClient = null;
+        private SportServiceClient _sportServiceClient = null;
 
         private ServiceSingleton() { }
 
@@ -18,6 +20,18 @@ namespace BettingAppWeb.Shared
                     _accountServiceClient = new AccountServiceClient();
                 }
                 return _accountServiceClient;
+            }
+        }
+
+        public SportServiceClient SportServiceClient
+        {
+            get
+            {
+                if (_sportServiceClient == null)
+                {    
+                    _sportServiceClient = new SportServiceClient();
+                }
+                return _sportServiceClient;
             }
         }
 

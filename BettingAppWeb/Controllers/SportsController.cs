@@ -1,9 +1,7 @@
-﻿using BettingAppWeb.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
 using System.Web.Mvc;
+using BettingAppWeb.Models;
+using BettingAppWeb.Shared;
 
 namespace BettingAppWeb.Controllers
 {
@@ -16,18 +14,18 @@ namespace BettingAppWeb.Controllers
 
         public ActionResult Browse()
         {
-            List<SportViewModel> list=new List<SportViewModel>();
-            list.Add(new SportViewModel { Name = "Sport1", ID = 1 });
-            list.Add(new SportViewModel { Name = "Spor", ID = 2 });
-            list.Add(new SportViewModel { Name = "Spt1", ID = 3 });
-            list.Add(new SportViewModel { Name = "Spordsada", ID = 4 });
-            list.Add(new SportViewModel { Name = "Sportasdas", ID = 5 });
-            list.Add(new SportViewModel { Name = "Sportdasd", ID = 6 });
-            list.Add(new SportViewModel { Name = "Sporasdas1", ID = 7 });
-            list.Add(new SportViewModel { Name = "Sportasdas", ID = 8 });
 
+            var sport = new SportViewModel {
+                Name = "Football",
+                Description = "A game with a ball",
+                Value = 24,
+            };
+            sport.EndTime = DateTime.Now;
 
-
+            ManagerSingleton.Instance.SportsManager.AddSport(sport);
+            var list = ManagerSingleton.Instance.SportsManager.GetSportsList();
+            
+           
             return View(list);
         }
     }
