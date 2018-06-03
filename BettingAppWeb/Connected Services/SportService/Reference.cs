@@ -155,6 +155,18 @@ namespace BettingAppWeb.SportService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/UpdateSport", ReplyAction="http://tempuri.org/ISportService/UpdateSportResponse")]
         System.Threading.Tasks.Task<bool> UpdateSportAsync(BettingAppWeb.SportService.Sport sport);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/ExistSportByName", ReplyAction="http://tempuri.org/ISportService/ExistSportByNameResponse")]
+        bool ExistSportByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/ExistSportByName", ReplyAction="http://tempuri.org/ISportService/ExistSportByNameResponse")]
+        System.Threading.Tasks.Task<bool> ExistSportByNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/GetSportByName", ReplyAction="http://tempuri.org/ISportService/GetSportByNameResponse")]
+        BettingAppWeb.SportService.Sport GetSportByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISportService/GetSportByName", ReplyAction="http://tempuri.org/ISportService/GetSportByNameResponse")]
+        System.Threading.Tasks.Task<BettingAppWeb.SportService.Sport> GetSportByNameAsync(string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -222,6 +234,22 @@ namespace BettingAppWeb.SportService {
         
         public System.Threading.Tasks.Task<bool> UpdateSportAsync(BettingAppWeb.SportService.Sport sport) {
             return base.Channel.UpdateSportAsync(sport);
+        }
+        
+        public bool ExistSportByName(string name) {
+            return base.Channel.ExistSportByName(name);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ExistSportByNameAsync(string name) {
+            return base.Channel.ExistSportByNameAsync(name);
+        }
+        
+        public BettingAppWeb.SportService.Sport GetSportByName(string name) {
+            return base.Channel.GetSportByName(name);
+        }
+        
+        public System.Threading.Tasks.Task<BettingAppWeb.SportService.Sport> GetSportByNameAsync(string name) {
+            return base.Channel.GetSportByNameAsync(name);
         }
     }
 }

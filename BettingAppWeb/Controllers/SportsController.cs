@@ -22,7 +22,7 @@ namespace BettingAppWeb.Controllers
         [HttpPost]
         public ActionResult Browse(SportViewModel sport)
         {
-            ManagerSingleton.Instance.SportsManager.AddSport(sport);
+            ManagerSingleton.Instance.SportsManager.AddUpdate(sport);
             ViewData["SportsList"] = ManagerSingleton.Instance.SportsManager.GetSportsList();
             return View();
         }

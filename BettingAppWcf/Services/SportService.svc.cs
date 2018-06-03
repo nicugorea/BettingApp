@@ -12,8 +12,8 @@ namespace BettingAppWcf.Services
 
             using (var database = new BettingAppDBEntities())
             {
-                var existingSport = database.Sports.FirstOrDefault(s => s.Name == sport.Name);
-                if (existingSport != null) return false;
+                if (ExistSportByName(sport.Name))
+                    return false;
 
                 database.Sports.Add(sport);
                 database.SaveChanges();
@@ -24,11 +24,29 @@ namespace BettingAppWcf.Services
 
         }
 
+        public bool ExistSportByName(string name)
+        {
+            using (var database = new BettingAppDBEntities())
+            {
+                var sport = GetSportByName(name);
+                if (sport == null) return false;
+                return true;
+            }
+        }
+
         public Sport GetSportById(int id)
         {
             using (var database = new BettingAppDBEntities())
             {
                 return database.Sports.Find(id);
+            }
+        }
+
+        public Sport GetSportByName(string name)
+        {
+            using (var database = new BettingAppDBEntities())
+            {
+                return database.Sports.FirstOrDefault(s => s.Name == name);
             }
         }
 
@@ -56,9 +74,13 @@ namespace BettingAppWcf.Services
         {
             using (var database = new BettingAppDBEntities())
             {
-                var existingSport = database.Sports.Find(sport.SportID);
+                var existingSport = database.Sports.Find((GetSportByName(sport.Name).SportID));
                 if (existingSport == null) return false;
-                existingSport = sport;
+
+                existingSport.Description = sport.Description;
+                existingSport.Value = sport.Value;
+                existingSport.EndTime = sport.EndTime;
+
                 database.SaveChanges();
                 return true;
             }

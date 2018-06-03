@@ -23,5 +23,10 @@ namespace BettingAppWcf.Services
         [OperationContract]
         bool UpdateSport(Sport sport);
 
+        [OperationContract]
+        bool ExistSportByName(string name);
+
+        [OperationContract]
+        Sport GetSportByName(string name);
     }
 }

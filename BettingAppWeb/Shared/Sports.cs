@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using BettingAppWeb.Models;
 using BettingAppWeb.SportService;
 
@@ -9,16 +6,23 @@ namespace BettingAppWeb.Shared
 {
     public class Sports : ISports
     {
+        public bool AddUpdate(SportViewModel sport)
+        {
+            if(ServiceSingleton.Instance.SportServiceClient.ExistSportByName(sport.Name))
+            {
+                return UpdateSport(sport);
+            }
+            else
+            {
+                return AddSport(sport);
+            }
+        }
+
         public bool AddSport(SportViewModel sport)
         {
-            var newSport = new Sport {
-                Name = sport.Name,
-                Description = sport.Description,
-                Value = sport.Value,
-                EndTime = sport.EndTime
-            };
-
-            return ServiceSingleton.Instance.SportServiceClient.AddSport(newSport);
+            return ServiceSingleton.Instance.SportServiceClient.AddSport(
+                GetSportFromViewModel(sport)
+                );
         }
 
         public List<SportViewModel> GetSportsList()
@@ -39,6 +43,26 @@ namespace BettingAppWeb.Shared
             }
 
             return sportsList;
+        }
+
+        public bool UpdateSport(SportViewModel sport)
+        {
+            return ServiceSingleton.Instance.SportServiceClient.UpdateSport(
+                GetSportFromViewModel(sport)
+                );
+            
+        }
+
+        public Sport GetSportFromViewModel(SportViewModel sport)
+        {
+            Sport newSport = new Sport
+            {
+                Name = sport.Name,
+                Description=sport.Description,
+                Value=sport.Value,
+                EndTime=sport.EndTime
+            };
+            return newSport;
         }
     }
 }

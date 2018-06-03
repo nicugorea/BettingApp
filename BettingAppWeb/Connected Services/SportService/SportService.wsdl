@@ -37,6 +37,18 @@
   <wsdl:message name="ISportService_UpdateSport_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateSportResponse" />
   </wsdl:message>
+  <wsdl:message name="ISportService_ExistSportByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExistSportByName" />
+  </wsdl:message>
+  <wsdl:message name="ISportService_ExistSportByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExistSportByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISportService_GetSportByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSportByName" />
+  </wsdl:message>
+  <wsdl:message name="ISportService_GetSportByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSportByNameResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISportService">
     <wsdl:operation name="GetSportsList">
       <wsdl:input wsaw:Action="http://tempuri.org/ISportService/GetSportsList" message="tns:ISportService_GetSportsList_InputMessage" />
@@ -57,6 +69,14 @@
     <wsdl:operation name="UpdateSport">
       <wsdl:input wsaw:Action="http://tempuri.org/ISportService/UpdateSport" message="tns:ISportService_UpdateSport_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISportService/UpdateSportResponse" message="tns:ISportService_UpdateSport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistSportByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISportService/ExistSportByName" message="tns:ISportService_ExistSportByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISportService/ExistSportByNameResponse" message="tns:ISportService_ExistSportByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSportByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISportService/GetSportByName" message="tns:ISportService_GetSportByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISportService/GetSportByNameResponse" message="tns:ISportService_GetSportByName_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISportService" type="tns:ISportService">
@@ -99,6 +119,24 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateSport">
       <soap:operation soapAction="http://tempuri.org/ISportService/UpdateSport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistSportByName">
+      <soap:operation soapAction="http://tempuri.org/ISportService/ExistSportByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSportByName">
+      <soap:operation soapAction="http://tempuri.org/ISportService/GetSportByName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
