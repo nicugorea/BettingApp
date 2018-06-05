@@ -26,5 +26,12 @@ namespace BettingAppWeb.Controllers
             ViewData["SportsList"] = ManagerSingleton.Instance.SportsManager.GetSportsList();
             return View();
         }
+
+        [HttpDelete]
+        public ActionResult Delete(SportViewModel sport)
+        {
+            ManagerSingleton.Instance.SportsManager.DeleteSport(sport);
+            return Redirect("~/Sports/Browse");
+        }
     }
 }

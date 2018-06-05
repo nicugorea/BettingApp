@@ -64,5 +64,12 @@ namespace BettingAppWeb.Shared
             };
             return newSport;
         }
+
+        public bool DeleteSport(SportViewModel sport)
+        {
+            var toDelete = ServiceSingleton.Instance.SportServiceClient.GetSportByName(sport.Name);
+            if (toDelete == null) return false;
+            return ServiceSingleton.Instance.SportServiceClient.RemoveSport(toDelete.SportID);
+        }
     }
 }

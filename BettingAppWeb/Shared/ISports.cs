@@ -12,6 +12,8 @@ namespace BettingAppWeb.Shared
 
         bool UpdateSport(SportViewModel sport);
 
+        bool DeleteSport(SportViewModel sport);
+
         bool AddUpdate(SportViewModel sport);
 
         Sport GetSportFromViewModel(SportViewModel sport);
